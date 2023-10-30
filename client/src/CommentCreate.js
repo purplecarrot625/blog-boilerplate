@@ -10,7 +10,7 @@ const CommentCreate = ({postId}) => {
     const [content, setContent] = useState('');
     const onSubmit = async (event) => {
         event.preventDefault(); // prevent page refresh
-        await axios.post(`http://localhost:4001/posts/${postId}/comments`, {
+        await axios.post(`http://my-app.org/posts/${postId}/comments`, {
             content
         })
 
