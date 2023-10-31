@@ -1,58 +1,57 @@
-apiVersion: skaffold/v2alpha3
+apiVersion: skaffold/v4beta3
 kind: Config
-deploy:
-  kubectl:
-    manifests:
-      - ./infra/k8s/*
+manifests:
+  rawYaml:
+    - ./infra/k8s/*
 build:
   local:
     push: false
   artifacts:
     - image: purplecarrotdocker/client
-    context: client
-    docker:
-      dockerfile: Dockerfile
-    sync:
-      manual:
-        - src: 'src/**/*.js'
-          dest: .
+      context: client
+      sync:
+        manual:
+          - src: src/**/*.js
+            dest: .
+      docker:
+        dockerfile: Dockerfile
     - image: purplecarrotdocker/comments
-    context: comments
-    docker:
-      dockerfile: Dockerfile
-    sync:
-      manual:
-        - src: '*.js'
-          dest: .
+      context: comments
+      sync:
+        manual:
+          - src: "*.js"
+            dest: .
+      docker:
+        dockerfile: Dockerfile
     - image: purplecarrotdocker/event-bus
-    context: event-bus
-    docker:
-      dockerfile: Dockerfile
-    sync:
-      manual:
-        - src: '*.js'
-          dest: .
+      context: event-bus
+      sync:
+        manual:
+          - src: "*.js"
+            dest: .
+      docker:
+        dockerfile: Dockerfile
     - image: purplecarrotdocker/moderation
-    context: moderation
-    docker:
-      dockerfile: Dockerfile
-    sync:
-      manual:
-        - src: '*.js'
-          dest: .
+      context: moderation
+      sync:
+        manual:
+          - src: "*.js"
+            dest: .
+      docker:
+        dockerfile: Dockerfile
     - image: purplecarrotdocker/posts
-    context: posts
-    docker:
-      dockerfile: Dockerfile
-    sync:
-      manual:
-        - src: '*.js'
-          dest: .
+      context: posts
+      sync:
+        manual:
+          - src: "*.js"
+            dest: .
+      docker:
+        dockerfile: Dockerfile
     - image: purplecarrotdocker/query
-    context: query
-    docker:
-      dockerfile: Dockerfile
-    sync:
-      manual:
-        - src: '*.js'
-          dest: .
+      context: query
+      sync:
+        manual:
+          - src: "*.js"
+            dest: .
+      docker:
+        dockerfile: Dockerfile

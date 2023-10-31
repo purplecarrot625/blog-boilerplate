@@ -7,7 +7,7 @@ const PostCreate = () => {
     const onSubmit = async (event) => {
         event.preventDefault(); // prevent page refresh
 
-        await axios.post('http://my-app.org/posts/create', {
+        await axios.post('http://posts.com/posts/create', {
             title
         });
 
